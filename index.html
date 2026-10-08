@@ -365,16 +365,28 @@
   .contact .logos .sep { width: 1px; height: 70px; background: var(--hair); }
   .contact .tagline { margin: var(--sp-1) 0 0; font-style: italic; color: var(--beige); font-size: clamp(22px, 2.6vw, 32px); }
   .contact .ctas { margin-top: var(--sp-1); display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-  .cards { margin-top: clamp(70px, 9vw, 110px); display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 1px; background: var(--hair); box-shadow: 0 0 0 1px var(--hair); text-align: left; }
-  .cards .addr { grid-row: span 2; display: flex; flex-direction: column; justify-content: center; }
-  .cards .addr p { font-size: clamp(18px, 1.6vw, 22px); line-height: 1.45; color: var(--cream); }
-  .cards a, .cards div { background: #000; padding: 32px 28px; display: block; transition: background .4s; }
-  .cards a:hover { background: #0d0b07; }
-  .cards h5 { margin: 0 0 12px; font-size: 13px; font-weight: 500; letter-spacing: .26em; text-transform: uppercase; color: var(--gold); }
-  .cards p { margin: 0; font-size: 17px; color: rgba(243,236,224,.82); white-space: pre-line; }
+  /* venue panels: Parpia (The Trade) · Mint (The Shop) */
+  .venues { margin-top: clamp(70px, 9vw, 110px); display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--hair); box-shadow: 0 0 0 1px var(--hair); text-align: left; }
+  .venue { background: #000; padding: clamp(28px, 4vw, 48px); display: flex; flex-direction: column; gap: 32px; }
+  .venue header { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; padding-bottom: 20px; border-bottom: 1px solid var(--hair); }
+  .venue h4 { margin: 0; font-size: clamp(24px, 2.4vw, 32px); font-weight: 700; letter-spacing: -.02em; color: var(--gold); }
+  .venue header span { font-style: italic; color: var(--beige); font-size: 17px; white-space: nowrap; }
+  .v-addr { display: block; }
+  .v-addr p { margin: 0; font-size: clamp(18px, 1.6vw, 21px); line-height: 1.5; color: var(--cream); white-space: pre-line; }
+  .v-dir { display: inline-flex; align-items: center; gap: 8px; margin-top: 14px; padding: 6px 0; font-size: 14px; font-weight: 500; letter-spacing: .04em; color: var(--gold); border-bottom: 1px solid transparent; transition: border-color .3s; }
+  .v-dir i { font-style: normal; transition: transform .4s var(--ease); }
+  .v-addr:hover .v-dir { border-color: var(--gold); }
+  .v-addr:hover .v-dir i { transform: translateX(4px); }
+  .venue dl { margin: 0; display: grid; gap: 18px; }
+  .venue dl > div { display: grid; grid-template-columns: 110px 1fr; gap: 16px; align-items: baseline; }
+  .venue dt { font-size: 13px; font-weight: 500; letter-spacing: .22em; text-transform: uppercase; color: var(--gold-soft, #b8924a); }
+  .venue dd { margin: 0; font-size: 17px; line-height: 1.5; color: rgba(243,236,224,.86); white-space: pre-line; display: flex; flex-direction: column; gap: 4px; }
+  .venue dd a { align-self: flex-start; padding: 2px 0; transition: color .25s; }
+  .venue dd a:hover { color: var(--gold); }
+  @media (max-width: 860px) { .venues { grid-template-columns: 1fr; } }
+  @media (max-width: 420px) { .venue dl > div { grid-template-columns: 1fr; gap: 4px; } }
   .legal { margin-top: 56px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: 13px; color: rgba(243,236,224,.45); }
-  @media (max-width: 860px) { .cards { grid-template-columns: 1fr 1fr; } .cards .addr { grid-row: auto; grid-column: 1 / -1; } }
-  @media (max-width: 480px) { .cards { grid-template-columns: 1fr; } .cards .addr { grid-column: auto; } .contact .logos .sep { display: none; } }
+  @media (max-width: 480px) { .contact .logos .sep { display: none; } }
 
   /* =========================================================
      REDUCED MOTION
@@ -670,16 +682,17 @@
         <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.700-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.200 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>
         WhatsApp
       </a>
-      <a class="btn" data-contact="phone">Call</a>
-      <a class="btn" data-contact="maps" target="_blank" rel="noopener">Directions</a>
+      <a class="btn" data-contact="email">Email</a>
     </div>
 
-    <div class="cards fu" style="--d:.5s">
-      <a class="addr" data-contact="maps" target="_blank" rel="noopener"><h5>Visit</h5><p data-text="address"></p></a>
-      <a data-contact="phone"><h5>Phone</h5><p data-text="phoneLabel"></p></a>
-      <a data-contact="whatsapp" target="_blank" rel="noopener"><h5>WhatsApp</h5><p data-text="whatsappLabel"></p></a>
-      <a data-contact="email"><h5>Email</h5><p data-text="email"></p></a>
-      <div><h5>Hours</h5><p data-text="hours"></p></div>
+    <!-- one panel per business — filled from CONTACT below -->
+    <div class="venues fu" style="--d:.5s">
+      <article class="venue" data-venue="parpia">
+        <header><h4>Parpia</h4><span>The Trade</span></header>
+      </article>
+      <article class="venue" data-venue="mint">
+        <header><h4>Mint by Parpia</h4><span>The Shop</span></header>
+      </article>
     </div>
 
     <div class="legal">
@@ -694,15 +707,27 @@
    CONTACT DETAILS — edit here
    ========================================================= */
 const CONTACT = {
-  company:       "Parpia Gold & Jewels Trading L.L.C",
-  address:       "4th Floor, Office No. 401,\nBelselah Gold Centre, Sikkat,\nAl Khail Road, Gold Souk,\nDeira, Dubai, U.A.E",
-  maps:          "https://www.google.com/maps/search/?api=1&query=Belselah+Gold+Centre+Al+Khail+Road+Gold+Souk+Deira+Dubai",
-  phone:         "+97142964129",
-  phoneLabel:    "+971 4 2964129",
-  whatsapp:      "971585722257",
-  whatsappLabel: "+971 5 85722257",
-  email:         "info@parpiagold.com",
-  hours:         "Sat–Thu\n10:00 – 20:00 (GST)"
+  company:  "Parpia Gold & Jewels Trading L.L.C",
+  whatsapp: { number: "971585722257", label: "+971 5 85722257" },
+  email:    "info@parpiagold.com",
+
+  /* Parpia — The Trade */
+  parpia: {
+    address: "4th Floor, Office No. 401,\nBelselah Gold Centre, Sikkat,\nAl Khail Road, Gold Souk,\nDeira, Dubai, U.A.E",
+    maps:    "https://www.google.com/maps/search/?api=1&query=Belselah+Gold+Centre+Al+Khail+Road+Gold+Souk+Deira+Dubai",
+    phones:  [["+97142964129", "+971 4 2964129"]],
+    whatsapp: true,
+    email:    true,
+    hours:   "Sat–Thu  10:00 – 20:00 (GST)"
+  },
+
+  /* Mint by Parpia — The Shop */
+  mint: {
+    address: "Shop No. 12, Al Daghaya 1 Building,\nBehind Women's Museum,\nP.O. Box 4170, Deira,\nDubai, U.A.E",
+    maps:    "https://www.google.com/maps/search/?api=1&query=Al+Daghaya+1+Building+Women%27s+Museum+Deira+Dubai",
+    phones:  [["+97143417917", "+971 4 341 7917"], ["+97142523600", "+971 4 2523 600"]],
+    hours:   "Mon–Fri  10:00 – 19:00\nSat  10:00 – 17:00"
+  }
 };
 
 (() => {
@@ -711,13 +736,28 @@ const CONTACT = {
 
   /* contact wiring */
   const hrefs = {
-    whatsapp: "https://wa.me/" + CONTACT.whatsapp,
-    phone: "tel:" + CONTACT.phone,
-    email: "mailto:" + CONTACT.email,
-    maps: CONTACT.maps
+    whatsapp: "https://wa.me/" + CONTACT.whatsapp.number,
+    email: "mailto:" + CONTACT.email
   };
   $$("[data-contact]").forEach(a => a.href = hrefs[a.dataset.contact]);
   $$("[data-text]").forEach(el => el.textContent = CONTACT[el.dataset.text]);
+
+  /* venue panels */
+  const esc = t => String(t).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  $$("[data-venue]").forEach(panel => {
+    const v = CONTACT[panel.dataset.venue];
+    const rows = [
+      ["Phone", v.phones.map(([n, l]) => `<a href="tel:${esc(n)}">${esc(l)}</a>`).join("")],
+      v.whatsapp && ["WhatsApp", `<a href="${hrefs.whatsapp}" target="_blank" rel="noopener">${esc(CONTACT.whatsapp.label)}</a>`],
+      v.email && ["Email", `<a href="${hrefs.email}">${esc(CONTACT.email)}</a>`],
+      ["Hours", `<span>${esc(v.hours)}</span>`]
+    ].filter(Boolean);
+    panel.insertAdjacentHTML("beforeend", `
+      <a class="v-addr" href="${esc(v.maps)}" target="_blank" rel="noopener">
+        <p>${esc(v.address)}</p><span class="v-dir">Directions <i aria-hidden="true">→</i></span>
+      </a>
+      <dl>${rows.map(([k, val]) => `<div><dt>${k}</dt><dd>${val}</dd></div>`).join("")}</dl>`);
+  });
   $("#yr").textContent = new Date().getFullYear();
 
   /* logo slots: try .svg then .png, else show the text fallback */
